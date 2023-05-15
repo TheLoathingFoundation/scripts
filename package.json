@@ -27,7 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "create-kolmafia-script": "latest",
-    "esbuild": "^0.17.15",
+    "esbuild": "^0.17.19",
     "esbuild-plugin-babel": "^0.2.3",
     "eslint": "^8.21.0",
     "eslint-plugin-libram": "^0.2.13",
