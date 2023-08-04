@@ -1,7 +1,7 @@
-import { participants } from '../data/participants'
+import { participants } from "../data/participants";
 
 export const announceWinners = () => {
-	const letter = `Hello from The Loathing Foundation!
+  const letter = `Hello from The Loathing Foundation!
 
 The June drawing was held this afternoon (one of us had a baby on Thursday, sorry for the delay).
 
@@ -22,8 +22,8 @@ Learn more here: https://foundation.loathers.net/faq#iveBeenPicked
 
 Thanks for participating, everybody, and see you next month.`;
 
-	// participants.forEach((recipient) => {
-	// 		console.log(`sending to ${recipient}`);
-	// 		Kmail.send(recipient, letter);
-	// })
-}
+  // participants.forEach((recipient) => {
+  // 		console.log(`sending to ${recipient}`);
+  // 		Kmail.send(recipient, letter);
+  // })
+};

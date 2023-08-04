@@ -1,8 +1,8 @@
 interface ItemClass {
-	name: string,
-	quantity: number,
+  name: string;
+  quantity: number;
 }
 export interface ItemPool {
-	standard: ItemClass[];
-	legacy: ItemClass[];
+  standard: ItemClass[];
+  legacy: ItemClass[];
 }
