@@ -7,8 +7,8 @@
   "scripts": {
     "build": "node build.mjs",
     "lint": "yarn lint:prettier",
-    "lint:prettier": "prettier --check src/**/*.ts *.{mjs,js,json}",
-    "format": "prettier --write src/**/*.ts *.{mjs,js,json}",
+    "lint:prettier": "prettier --check src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
     "install-mafia": "create-kolmafia-script --install"
   },
   "dependencies": {
