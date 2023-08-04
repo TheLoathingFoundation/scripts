@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "node build.mjs",
-    "format": "prettier --write src/**/*.ts *.{mjs,js,json}",
-    "watch": "node build.mjs --watch",
+    "lint": "yarn lint:prettier",
+    "lint:prettier": "prettier --check src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
     "install-mafia": "create-kolmafia-script --install"
   },
   "dependencies": {

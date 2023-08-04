@@ -1,14 +1,9 @@
 /* eslint-env node */
 import { build } from "esbuild";
 import babel from "esbuild-plugin-babel";
-import process from "process";
-
-const args = process.argv.slice(2);
-
-const watch = args.some((a) => a === "--watch" || a === "-w");
 
 build({
-  entryPoints: { "tlf": "src/main.ts" },
+  entryPoints: { tlf: "src/main.ts" },
   bundle: true,
   minifySyntax: true,
   platform: "node",
@@ -16,7 +11,6 @@ build({
   external: ["kolmafia"],
   plugins: [babel()],
   outdir: "dist/scripts/tlf",
-  watch,
   loader: { ".json": "text" },
   inject: ["./kolmafia-polyfill.js"],
   define: {

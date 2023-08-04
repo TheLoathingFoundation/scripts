@@ -1,12 +1,11 @@
-import { Kmail } from 'libram';
+import { Kmail } from "libram";
 
-const parseRankings = (text: string): string[] => {
-}
+const parseRankings = (text: string): string[] => {};
 
 export const processEntries = () => {
-	const messages = Kmail.inbox(500)
+  const messages = Kmail.inbox(500);
 
-	messages.forEach((message) => {
-		message
-	});
-}
+  messages.forEach((message) => {
+    message;
+  });
+};
