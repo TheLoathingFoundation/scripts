@@ -2,8 +2,8 @@ import { Args } from "grimoire-kolmafia";
 
 import {
 	announceStart,
+  processEntries,
 } from './tasks'
-
 
 const config = Args.create(
 	'tlf',
@@ -13,8 +13,12 @@ const config = Args.create(
 			help: 'Invoke the kmail announcing the raffle instructions for the month.',
 			setting: '',
 		}),
-		'send': Args.flag({
-			help: 'Actually send kmails.',
+		'processInbox': Args.flag({
+			help: 'Process kmails for the current month.',
+			setting: '',
+		}),
+		'forRealsies': Args.flag({
+			help: 'Actually send kmails / save results.',
 			setting: '',
 		}),
 	},
@@ -29,7 +33,12 @@ export default function main(command = "help"): void {
   }
 
 	if (config.kickoff) {
-		announceStart(config.send);
+		announceStart(config.forRealsies);
+		return;
+	}
+
+	if (config.processInbox) {
+		processEntries(config.forRealsies);
 		return;
 	}
 }
