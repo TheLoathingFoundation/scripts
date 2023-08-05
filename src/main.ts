@@ -1,4 +1,5 @@
 import { Args } from "grimoire-kolmafia";
+import { myId } from 'kolmafia'
 
 import {
 	announceStart,
@@ -25,6 +26,10 @@ const config = Args.create(
 )
 
 export default function main(command = "help"): void {
+  if (myId() !== '3580284') { // TheLoathingFoundation (#3580284)
+    console.log('You tried to run this on the wrong account!  Should be TheLoathingFoundation (#3580284).')
+    return;
+  }
 
   Args.fill(config, command);
   if (config.help) {
