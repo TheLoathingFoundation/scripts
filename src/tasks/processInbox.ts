@@ -50,6 +50,8 @@ const stripQuotedText = (text: string): string =>
 
 const stripHtmlTable = (text: string): string => text.replace(/<table.*>.*<\/table>/g, "");
 
+const stripHtmlTags = (text: string): string => text.replace(/<[^>]*>?/gm, "");
+
 const tryToFindRankings = (text: string) =>
   text.match(BEST_RANKING_REGEX) || text.match(RANKING_REGEX);
 
@@ -66,8 +68,16 @@ const parseRankings = (text: string): string[] | undefined => {
     .filter((ranking) => ranking !== "" && ranking !== ",");
 };
 
+const generateQuote = (message: Kmail): string =>
+  stripHtmlTags(message.rawMessage)
+    .split("\n")
+    .map((line) => `> ${line}`)
+    .join("\n");
+
 const generateEntryMessage = (entry: Entry, message: Kmail): string =>
-  `Hello ${message.senderName},
+  `${generateQuote(message)}
+
+Hello ${message.senderName},
 
 Our robots parsed your entry as: ${entry.rankings.map((ranking) => ranking.key).join(", ")}
 
@@ -81,10 +91,14 @@ Our robots aren't very smart, so keep in mind that...
 1. capitalization matters (so write "A" instead of "a").
 2. Using the "[" and "]" around your ranking is a huge help.`;
 
-const generateThankYouMessage = (message: Kmail): string => `Thank you so much for the donation!`;
+const generateThankYouMessage = (message: Kmail): string => `${generateQuote(message)}
+
+Thank you so much for the donation!`;
 
 const generateGenericResponseMessage = (message: Kmail): string =>
-  `Hello ${message.senderName},
+  `${generateQuote(message)}
+
+Hello ${message.senderName},
 
 You've reached our automated response robot.
 
@@ -114,7 +128,7 @@ export const processInbox = (saveAndSend = false, debug = false) => {
   const messageLog = loadMessageLog();
   const entries = loadCurrentEntries();
   inboxMessages.forEach((message) => {
-    if (hasBeenProcessed(message, messageLog)) {
+    if (hasBeenProcessed(message, messageLog) && !debug) {
       console.log(
         `Skipping processed entry ${message.id} from ${message.senderName} #${
           message.senderId
