@@ -3,7 +3,7 @@ import { myId } from 'kolmafia'
 
 import {
 	announceStart,
-  processEntries,
+  processInbox,
 } from './tasks'
 
 const config = Args.create(
@@ -22,6 +22,10 @@ const config = Args.create(
 			help: 'Actually send kmails / save results.',
 			setting: '',
 		}),
+		'debug': Args.flag({
+			help: 'Output more (and prevent sending kmails / saving results).  This overrides the forRealsies flag.',
+			setting: '',
+		}),
 	},
 )
 
@@ -38,12 +42,12 @@ export default function main(command = "help"): void {
   }
 
 	if (config.kickoff) {
-		announceStart(config.forRealsies);
+		announceStart(config.forRealsies, config.debug);
 		return;
 	}
 
 	if (config.processInbox) {
-		processEntries(config.forRealsies);
+		processInbox(config.forRealsies, config.debug);
 		return;
 	}
 }
