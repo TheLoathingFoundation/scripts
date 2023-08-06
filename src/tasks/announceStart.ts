@@ -57,7 +57,7 @@ Remember:
 (You're receiving this because you signed up to The Loathing Foundation.  Learn more at https://foundation.loathers.net).`;
 };
 
-export const announceStart = (send = false) => {
+export const announceStart = (send = false, debug = false) => {
   const baseDate = new Date();
   const itemPool = getItemPool(itemPools, baseDate);
   const message = getMessage(itemPool, baseDate);
@@ -67,7 +67,7 @@ export const announceStart = (send = false) => {
   message.split("\n").forEach((messageLine) => console.log(`${messageLine}\n`));
   console.log(`--------------\n`);
 
-  if (send) {
+  if (send && !debug) {
     participants.forEach((recipient) => {
       console.log(`sending to ${recipient}`);
       Kmail.send(recipient, message);
