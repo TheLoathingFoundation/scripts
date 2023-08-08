@@ -1,4 +1,4 @@
-import { bufferToFile, fileToBuffer } from "kolmafia";
+import { bufferToFile, fileToBuffer, entityDecode } from "kolmafia";
 import { Kmail } from "libram";
 
 import { getMonthWithTrailingZero } from "../time";
@@ -46,6 +46,7 @@ const stripQuotedText = (text: string): string =>
   text
     .split("\n")
     .filter((line) => !line.startsWith(">"))
+    .filter((line) => !line.startsWith("&gt;"))
     .join("\n");
 
 const stripHtmlTable = (text: string): string => text.replace(/<table.*>.*<\/table>/g, "");
@@ -69,7 +70,8 @@ const parseRankings = (text: string): string[] | undefined => {
 };
 
 const generateQuote = (message: Kmail): string =>
-  stripHtmlTags(message.rawMessage)
+  entityDecode(stripHtmlTags(message.rawMessage))
+    .replace(/\&/g, "")
     .split("\n")
     .map((line) => `> ${line}`)
     .join("\n");
@@ -136,7 +138,7 @@ export const processInbox = (saveAndSend = false, debug = false) => {
       );
       return;
     }
-    if (isObsolete(message, entries)) {
+    if (isObsolete(message, entries) && !debug) {
       console.log(
         `Skipping obsolete entry ${message.id} from ${message.senderName} #${
           message.senderId
