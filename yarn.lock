@@ -2331,10 +2331,10 @@ hasbin@^1.2.3:
   dependencies:
     async "~1.5"
 
-html-entities@^2.3.2:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/html-entities/-/html-entities-2.3.3.tgz"
-  integrity sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==
+html-entities@^2.3.2, html-entities@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.4.0.tgz#edd0cee70402584c8c76cc2c0556db09d1f45061"
+  integrity sha512-igBTJcNNNhvZFRtm8uA6xMY6xYleeDwn3PeBCkDz7tHttv4F2hsDI2aPgNERWzvRcNYHNT3ymRaQzllmXj4YsQ==
 
 human-signals@^2.1.0:
   version "2.1.0"
@@ -2519,10 +2519,12 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-libram@^0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.7.15.tgz#c7c4b5a9adfc1af334384c17176f1fda6c4e24ce"
-  integrity sha512-+ZybJTdnBUaFBOmRz+W9T/pidC3eDKLWclhm/8MZgI2uURgFMhZjYZajdyFRiZcqzpsRmM6TORx1/cjss9ijRQ==
+libram@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.8.5.tgz#8e73b68d2313bda6e406fa93b6e2c0fb06853852"
+  integrity sha512-g4IeOJ4VkwRkUHhZunD9MibkNM41B20fxSJI4XNIze1veXt1gEcbUIkrF28HIvrjTxOiOqH5sOD/h56EDA733g==
+  dependencies:
+    html-entities "^2.4.0"
 
 license.js@^3.1.2:
   version "3.1.2"
