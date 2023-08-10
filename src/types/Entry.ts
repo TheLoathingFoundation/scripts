@@ -1,9 +1,9 @@
 interface Ranking {
-  key: string;
-  item: string;
+	key: string;
+	item: string;
 }
 export interface Entry {
-  date: string;
-  message: string;
-  rankings: Ranking[];
+	date: string;
+	message: string;
+	rankings: Ranking[];
 }

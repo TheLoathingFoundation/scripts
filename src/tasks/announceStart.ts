@@ -1,37 +1,24 @@
 import { Kmail } from "libram";
 
-import { itemPools } from "../data/itemPools";
 import { participants } from "../data/participants";
-import {
-  getMonthWithTrailingZero,
-  getMonthName,
-  formatDate,
-  getDrawDate,
-  getDeadline,
-} from "../time";
+import { getItemPool } from "../itemPools";
+import { getMonthName, formatDate, getDrawDate, getDeadline } from "../time";
 import type { ItemPool } from "../types";
 
-const getItemPool = (pools: Record<string, ItemPool>, baseDate: Date): ItemPool => {
-  const year = baseDate.getFullYear();
-  const month = getMonthWithTrailingZero(baseDate);
-  const key = `${year}-${month}`;
-  return pools[key];
-};
-
 const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
-  const standardItemList = itemPool.standard.map(
-    (itemClass, index) =>
-      `${String.fromCharCode(65 + index)}. ${itemClass.name} (${itemClass.quantity}x)`
-  );
-  const legacyItemList = itemPool.legacy.map(
-    (itemClass, index) => `${1 + index}. ${itemClass.name} (${itemClass.quantity}x)`
-  );
+	const standardItemList = itemPool.standard.map(
+		(itemClass, index) =>
+			`${String.fromCharCode(65 + index)}. ${itemClass.name} (${itemClass.quantity}x)`
+	);
+	const legacyItemList = itemPool.legacy.map(
+		(itemClass, index) => `${1 + index}. ${itemClass.name} (${itemClass.quantity}x)`
+	);
 
-  const month = getMonthName(baseDate);
-  const deadline = formatDate(getDeadline(baseDate));
-  const draw = formatDate(getDrawDate(baseDate));
+	const month = getMonthName(baseDate);
+	const deadline = formatDate(getDeadline(baseDate));
+	const draw = formatDate(getDrawDate(baseDate));
 
-  return `Hello from The Loathing Foundation!
+	return `Hello from The Loathing Foundation!
 For ${month} the following IOTMs will be made available for trade:
 
 ${standardItemList.join("\n")}
@@ -57,22 +44,21 @@ Remember:
 (You're receiving this because you signed up to The Loathing Foundation.  Learn more at https://foundation.loathers.net).`;
 };
 
-export const announceStart = (send = false, debug = false) => {
-  const baseDate = new Date();
-  const itemPool = getItemPool(itemPools, baseDate);
-  const message = getMessage(itemPool, baseDate);
+export const announceStart = (baseDate = new Date(), send = false, debug = false) => {
+	const itemPool = getItemPool(baseDate);
+	const message = getMessage(itemPool, baseDate);
 
-  console.log(`Kickoff Message:\n`);
-  console.log(`--------------\n`);
-  message.split("\n").forEach((messageLine) => console.log(`${messageLine}\n`));
-  console.log(`--------------\n`);
+	console.log(`Kickoff Message:\n`);
+	console.log(`--------------\n`);
+	message.split("\n").forEach((messageLine) => console.log(`${messageLine}\n`));
+	console.log(`--------------\n`);
 
-  if (send && !debug) {
-    participants.forEach((recipient) => {
-      console.log(`sending to ${recipient}`);
-      Kmail.send(recipient, message);
-    });
-  } else {
-    console.log("Kmails were not actually sent, use the command `tlf kickoff send`");
-  }
+	if (send && !debug) {
+		participants.forEach((recipient) => {
+			console.log(`sending to ${recipient}`);
+			Kmail.send(recipient, message);
+		});
+	} else {
+		console.log("Kmails were not actually sent, use the command `tlf kickoff forRealsies`");
+	}
 };
