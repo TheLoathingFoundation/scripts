@@ -1,29 +1,48 @@
+import { Kmail } from "libram";
+
 import { participants } from "../data/participants";
+import { getResultsByDate } from "../results";
+import { getMonthName } from "../time";
 
-export const announceWinners = () => {
-  const letter = `Hello from The Loathing Foundation!
+const getMessage = (baseDate: Date) => {
+	const results = getResultsByDate(baseDate);
+	const month = getMonthName(baseDate);
 
-The June drawing was held this afternoon (one of us had a baby on Thursday, sorry for the delay).
+	const winnersList = results.map(
+		(result, index) => `${index + 1}. ${result.playerName} (#${result.playerId}): ${result.item}`
+	);
 
-The results are as follows:
+	return `Hello from The Loathing Foundation!
 
-1. Lesbian_Syphilitic_Spanker (#2732184): Origami Pasties
-2. Infopowerbroker (#2109704): Train Set
-3. XWiz (#1057104): Grey Gosling
-4. LucasYeo (#2072416): Autumn Bot
-5. Hedgemonster (#2270868): Cook Book Bat
-6: Djansou (#3143706): Autumn Bot
+The ${month} drawing has been held and the results are as follows:
+
+${winnersList.join("\n")}
 
 If your name is listed above, you are invited to trade 1 Mr. A + 3 Uncle Bucks for your item. Please respond to this message with an up to date "greenbox" for your account.
 
 Once you reply we'll initiate the trade, and you'll have up to 3 months to complete it.
 
+Remember: this is *for your use!* do *not* resell these items!
+
 Learn more here: https://foundation.loathers.net/faq#iveBeenPicked
 
 Thanks for participating, everybody, and see you next month.`;
+};
 
-  // participants.forEach((recipient) => {
-  // 		console.log(`sending to ${recipient}`);
-  // 		Kmail.send(recipient, letter);
-  // })
+export const announceWinners = (baseDate = new Date(), send = false, debug = false) => {
+	const message = getMessage(baseDate);
+
+	console.log(`Winners Message:\n`);
+	console.log(`--------------\n`);
+	message.split("\n").forEach((messageLine) => console.log(`${messageLine}\n`));
+	console.log(`--------------\n`);
+
+	if (send && !debug) {
+		participants.forEach((recipient) => {
+			console.log(`sending to ${recipient}`);
+			Kmail.send(recipient, message);
+		});
+	} else {
+		console.log("Kmails were not actually sent, use the command `tlf announceWinners forRealsies`");
+	}
 };

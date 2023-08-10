@@ -3,8 +3,11 @@ import { myId } from 'kolmafia'
 
 import {
 	announceStart,
+  announceWinners,
   processInbox,
+  registerResult,
 } from './tasks'
+import { getDateFromKey } from "./time";
 
 const config = Args.create(
 	'tlf',
@@ -14,10 +17,30 @@ const config = Args.create(
 			help: 'Invoke the kmail announcing the raffle instructions for the month.',
 			setting: '',
 		}),
+		'announceWinners': Args.flag({
+			help: 'Invoke the kmail announcing the raffle results for the month.',
+			setting: '',
+		}),
 		'processInbox': Args.flag({
 			help: 'Process kmails for the current month.',
 			setting: '',
 		}),
+    'registerResult': Args.flag({
+      help: 'Register a winner',
+      setting: '',
+    }),
+    'playerId': Args.string({
+      help: 'The ID of the player that won',
+      setting: '',
+    }),
+    'rankCode': Args.string({
+      help: 'The rank code (e.g. A, B, 1, 2, etc.) of the item',
+      setting: '',
+    }),
+    'date': Args.string({
+      help: 'The month / year in question (yyyy-mm)',
+      setting: '',
+    }),
 		'forRealsies': Args.flag({
 			help: 'Actually send kmails / save results.',
 			setting: '',
@@ -40,9 +63,17 @@ export default function main(command = "help"): void {
     Args.showHelp(config);
     return;
   }
+  let baseDate = config.date
+    ? getDateFromKey(config.date)
+    : new Date();
 
 	if (config.kickoff) {
-		announceStart(config.forRealsies, config.debug);
+		announceStart(baseDate, config.forRealsies, config.debug);
+		return;
+	}
+
+	if (config.announceWinners) {
+		announceWinners(baseDate, config.forRealsies, config.debug);
 		return;
 	}
 
@@ -50,4 +81,20 @@ export default function main(command = "help"): void {
 		processInbox(config.forRealsies, config.debug);
 		return;
 	}
+
+  if (config.registerResult) {
+    if (config.playerId === undefined) {
+      throw new Error('You need to specify a playerId');
+    }
+    if (config.rankCode === undefined) {
+      throw new Error('You need to specify a rankCode');
+    }
+    registerResult(
+      config.playerId,
+      config.rankCode,
+      baseDate,
+      config.forRealsies,
+      config.debug,
+    );
+  }
 }
