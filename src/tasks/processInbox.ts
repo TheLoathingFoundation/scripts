@@ -5,7 +5,7 @@ import { getMonthWithTrailingZero } from "../time";
 import type { Entry } from "../types";
 
 const BEST_RANKING_REGEX = /\[(([A-Z0-9](,\s*)?)+)\]/;
-const RANKING_REGEX = /(([A-H0-9](,\s*)?)+)($|\s|\.|\!|\))/;
+const RANKING_REGEX = /(([A-H0-9](,\s*)?)+)($|\s|\.|\!|\)|\"|\&)/;
 
 const getCurrentEntriesFileName = (): string => {
   const date = new Date();
