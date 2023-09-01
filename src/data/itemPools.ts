@@ -130,4 +130,38 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2023-09": {
+		standard: [
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "Clan VIP Lounge invitation",
+				quantity: 1,
+			},
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "packaged June cleaver",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Pocket Meteor Guide",
+				quantity: 1,
+			},
+			{
+				name: "Thor's Pliers",
+				quantity: 1,
+			},
+		],
+	},
 };
