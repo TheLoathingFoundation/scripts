@@ -9,7 +9,7 @@ const getMessage = (baseDate: Date) => {
 	const month = getMonthName(baseDate);
 
 	const winnersList = results.map(
-		(result, index) => `${index + 1}. ${result.playerName} (#${result.playerId}): ${result.item}`
+		(result, index) => `${index + 1}. ${result.playerName} (#${result.playerId}): ${result.item}`,
 	);
 
 	return `Hello from The Loathing Foundation!

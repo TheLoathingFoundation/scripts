@@ -88,12 +88,12 @@ const generateEntryMessage = (entry: Entry, itemPool: ItemPool, message: Kmail):
 	const possibleRankCodes = getRankCodes(itemPool);
 	const rankings = entry.rankings.filter((ranking) => possibleRankCodes.includes(ranking.key));
 	const unrankedItems = possibleRankCodes.filter(
-		(rankCode) => !rankings.find((ranking) => ranking.key === rankCode)
+		(rankCode) => !rankings.find((ranking) => ranking.key === rankCode),
 	);
 	const detailedRankingBlock = rankings
 		.map(
 			(ranking, index) =>
-				`${ordinal(index + 1)}: ${getItemByRankCode(ranking.key, itemPool).name} (${ranking.key})`
+				`${ordinal(index + 1)}: ${getItemByRankCode(ranking.key, itemPool).name} (${ranking.key})`,
 		)
 		.join("\n");
 	const unrankedItemsBlock = unrankedItems
@@ -167,7 +167,7 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 			console.log(
 				`Skipping processed entry ${message.id} from ${message.senderName} #${
 					message.senderId
-				} (${message.date.toISOString()})`
+				} (${message.date.toISOString()})`,
 			);
 			return;
 		}
@@ -175,7 +175,7 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 			console.log(
 				`Skipping obsolete entry ${message.id} from ${message.senderName} #${
 					message.senderId
-				} (${message.date.toISOString()})`
+				} (${message.date.toISOString()})`,
 			);
 			return;
 		}
@@ -187,10 +187,10 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 			if (message.items().size > 0) {
 				console.log(
 					`New donation from ${message.senderName} #${message.senderId}: [${Array.from(
-						message.items().keys()
+						message.items().keys(),
 					)
 						.map((item) => item.name)
-						.join(", ")}]`
+						.join(", ")}]`,
 				);
 				responseMessage = generateThankYouMessage(message);
 			} else {
@@ -202,7 +202,7 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 			}
 		} else {
 			console.log(
-				`New entry from ${message.senderName} #${message.senderId}: [${rankings.join(", ")}]`
+				`New entry from ${message.senderName} #${message.senderId}: [${rankings.join(", ")}]`,
 			);
 			const entry = {
 				date: message.date.toISOString(),
