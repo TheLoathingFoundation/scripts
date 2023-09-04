@@ -39,3 +39,8 @@ export const getItemByRankCode = (rankCode: string, itemPool: ItemPool): Item =>
 	}
 	return Item.get(itemName);
 };
+
+export const getRankCodes = (itemPool: ItemPool): string[] => [
+	...itemPool.standard.map((item, index) => getRankCodeForStandardItemIndex(index)),
+	...itemPool.legacy.map((item, index) => getRankCodeForLegacyItemIndex(index)),
+];
