@@ -8,10 +8,10 @@ import type { ItemPool } from "../types";
 const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 	const standardItemList = itemPool.standard.map(
 		(itemClass, index) =>
-			`${String.fromCharCode(65 + index)}. ${itemClass.name} (${itemClass.quantity}x)`
+			`${String.fromCharCode(65 + index)}. ${itemClass.name} (${itemClass.quantity}x)`,
 	);
 	const legacyItemList = itemPool.legacy.map(
-		(itemClass, index) => `${1 + index}. ${itemClass.name} (${itemClass.quantity}x)`
+		(itemClass, index) => `${1 + index}. ${itemClass.name} (${itemClass.quantity}x)`,
 	);
 
 	const month = getMonthName(baseDate);

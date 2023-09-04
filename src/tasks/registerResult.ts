@@ -9,7 +9,7 @@ export const registerResult = (
 	rankCode: string,
 	date = new Date(),
 	save = false,
-	debug = false
+	debug = false,
 ) => {
 	const results = loadResults();
 	const key = getDateKey(date);
