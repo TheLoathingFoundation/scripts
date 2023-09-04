@@ -1,8 +1,9 @@
 import { bufferToFile, fileToBuffer, entityDecode } from "kolmafia";
 import { Kmail } from "libram";
 
+import { getItemByRankCode, getItemPool, getRankCodes } from "../itemPools";
 import { getMonthWithTrailingZero } from "../time";
-import type { Entry } from "../types";
+import type { Entry, ItemPool } from "../types";
 
 const BEST_RANKING_REGEX = /\[(([A-Z0-9](,\s*)?)+)\]/;
 const RANKING_REGEX = /(([A-H0-9](,\s*)?)+)($|\s|\.|\!|\)|\"|\&)/;
@@ -69,6 +70,13 @@ const parseRankings = (text: string): string[] | undefined => {
 		.filter((ranking) => ranking !== "" && ranking !== ",");
 };
 
+const ordinal = (n: number): string => {
+	const endings = ["th", "st", "nd", "rd"];
+	const base = n % 100;
+	const ending = endings[(base - 20) % 10] || endings[base] || endings[0];
+	return `${n}${ending}`;
+};
+
 const generateQuote = (message: Kmail): string =>
 	entityDecode(stripHtmlTags(message.rawMessage))
 		.replace(/\&/g, "")
@@ -76,12 +84,36 @@ const generateQuote = (message: Kmail): string =>
 		.map((line) => `> ${line}`)
 		.join("\n");
 
-const generateEntryMessage = (entry: Entry, message: Kmail): string =>
-	`${generateQuote(message)}
+const generateEntryMessage = (entry: Entry, itemPool: ItemPool, message: Kmail): string => {
+	const possibleRankCodes = getRankCodes(itemPool);
+	const rankings = entry.rankings.filter((ranking) => possibleRankCodes.includes(ranking.key));
+	const unrankedItems = possibleRankCodes.filter(
+		(rankCode) => !rankings.find((ranking) => ranking.key === rankCode)
+	);
+	const detailedRankingBlock = rankings
+		.map(
+			(ranking, index) =>
+				`${ordinal(index + 1)}: ${getItemByRankCode(ranking.key, itemPool).name} (${ranking.key})`
+		)
+		.join("\n");
+	const unrankedItemsBlock = unrankedItems
+		.map((rankCode) => `* ${getItemByRankCode(rankCode, itemPool).name} (${rankCode})`)
+		.join("\n");
+	return `${generateQuote(message)}
 
 Hello ${message.senderName},
 
-Our robots parsed your entry as: ${entry.rankings.map((ranking) => ranking.key).join(", ")}
+Our robots parsed your entry as: ${rankings.map((ranking) => ranking.key).join(", ")}
+
+You ranked the following items:
+
+${detailedRankingBlock === "" ? "(none)" : detailedRankingBlock}
+
+You did NOT rank the following items:
+
+${unrankedItemsBlock}
+
+---
 
 If that's correct, you're all set (don't reply to this message).
 If that is INCORRECT, reply to this kmail to update your ranking.  Use the following format:
@@ -92,7 +124,7 @@ Our robots aren't very smart, so keep in mind that...
 
 1. capitalization matters (so write "A" instead of "a").
 2. Using the "[" and "]" around your ranking is a huge help.`;
-
+};
 const generateThankYouMessage = (message: Kmail): string => `${generateQuote(message)}
 
 Thank you so much for the donation!`;
@@ -125,10 +157,11 @@ const isObsolete = (message: Kmail, entries: Record<string, Entry>): boolean => 
 	return false;
 };
 
-export const processInbox = (saveAndSend = false, debug = false) => {
+export const processInbox = (baseDate: Date, saveAndSend = false, debug = false) => {
 	const inboxMessages = Kmail.inbox(9001);
 	const messageLog = loadMessageLog();
 	const entries = loadCurrentEntries();
+	const itemPool = getItemPool(baseDate);
 	inboxMessages.forEach((message) => {
 		if (hasBeenProcessed(message, messageLog) && !debug) {
 			console.log(
@@ -180,7 +213,7 @@ export const processInbox = (saveAndSend = false, debug = false) => {
 				})),
 			};
 			entries[message.senderId] = entry;
-			responseMessage = generateEntryMessage(entry, message);
+			responseMessage = generateEntryMessage(entry, itemPool, message);
 		}
 		if (responseMessage !== undefined) {
 			if (saveAndSend) {

@@ -74,7 +74,7 @@ export default function main(command = "help"): void {
 	}
 
 	if (config.processInbox) {
-		processInbox(config.forRealsies, config.debug);
+		processInbox(baseDate, config.forRealsies, config.debug);
 		return;
 	}
 
