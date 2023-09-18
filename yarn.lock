@@ -2595,9 +2595,9 @@ json5@^2.2.3:
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 kolmafia@latest:
-  version "5.27319.0"
-  resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-5.27319.0.tgz#67c551c2cfe62df643689ab6917f77df35ebe18a"
-  integrity sha512-z4oRBMph0DOgnJXjwCq/yd2ENuNTvndE2hKn4ks3NdrRw4GlpPKJv46mCWUb5qReKaeNBuxCINV7LQznttGVeQ==
+  version "5.27603.0"
+  resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-5.27603.0.tgz#8e68c03ae74c7531bc9bd9a9e1a3140f343f31f4"
+  integrity sha512-85B6vEGN8gXWe9qeYjGzqgOiGVpcxn70dNS+9/PhWqqpxheat3g3Gf4lNBapqDMaXJsRosSrm06pGcg1EkW+UQ==
 
 levn@^0.4.1:
   version "0.4.1"
