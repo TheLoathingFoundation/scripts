@@ -1876,8 +1876,9 @@ create-create-app@^7.3.0:
     yargs-interactive "^3.0.1"
 
 create-kolmafia-script@latest:
-  version "0.0.15"
-  resolved "https://registry.npmjs.org/create-kolmafia-script/-/create-kolmafia-script-0.0.15.tgz"
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/create-kolmafia-script/-/create-kolmafia-script-0.0.17.tgz#1be25dcf4a887f1bdf46b9dccadea11624ce3bbf"
+  integrity sha512-wLMysP4mXfvLCBGk1O7ZbIMf7fL0FX1Cdm8VcqlvXxhkevIStS4XY4tk3Xib6DaSsER9dbh1e5OPbuTbvT5W8Q==
   dependencies:
     chalk "^4.1.2"
     create-create-app "^7.3.0"
