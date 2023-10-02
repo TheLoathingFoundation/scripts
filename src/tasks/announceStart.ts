@@ -31,9 +31,9 @@ You may include *ONE* legacy item in your rankings; only one of them will be dis
 
 An example ranking: "[C, 1, A, B]"
 
-Please consider using the [] since it will help our robots know what's going on.
+Use the [] since it will help our robots know what's going on.
 
-Please respond to this message by ${deadline} if you want to participate in the drawing.
+Respond to this message by ${deadline} if you want to participate in the drawing.
 Winners will have an opportunity to trade 1 Mr. A + 3 Uncle Bucks (OR 13 Uncle Bucks) for the available item.
 Selected players will be announced via k-mail and on the foundation website on ${draw}.
 
