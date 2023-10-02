@@ -14,7 +14,7 @@
   "dependencies": {
     "grimoire-kolmafia": "^0.3.22",
     "kolmafia": "latest",
-    "libram": "^0.8.12"
+    "libram": "^0.8.13"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
