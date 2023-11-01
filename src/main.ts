@@ -1,7 +1,13 @@
 import { Args } from "grimoire-kolmafia";
 import { myId } from "kolmafia";
 
-import { announceStart, announceWinners, processInbox, registerResult } from "./tasks";
+import {
+	announceStart,
+	announceWinners,
+	processInbox,
+	registerResult,
+	generateStatistics,
+} from "./tasks";
 import { getDateFromKey } from "./time";
 
 const config = Args.create(
@@ -44,6 +50,10 @@ const config = Args.create(
 			help: "Output more (and prevent sending kmails / saving results).  This overrides the forRealsies flag.",
 			setting: "",
 		}),
+		generateStatistics: Args.flag({
+			help: "Generate some fun statistics",
+			setting: "",
+		}),
 	},
 );
 
@@ -75,6 +85,11 @@ export default function main(command = "help"): void {
 
 	if (config.processInbox) {
 		processInbox(baseDate, config.forRealsies, config.debug);
+		return;
+	}
+
+	if (config.generateStatistics) {
+		generateStatistics();
 		return;
 	}
 
