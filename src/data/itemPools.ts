@@ -186,4 +186,38 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2023-11": {
+		standard: [
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+			{
+				name: "undamaged Unbreakable Umbrella",
+				quantity: 1,
+			},
+			{
+				name: "combat lover's locket lockbox",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "corked genie bottle",
+				quantity: 1,
+			},
+			{
+				name: "January's Garbage Tote (unopened)",
+				quantity: 1,
+			},
+			{
+				name: "jewel-eyed wizard hat",
+				quantity: 1,
+			},
+		],
+	},
 };
