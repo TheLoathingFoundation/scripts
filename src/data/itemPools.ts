@@ -4,7 +4,7 @@ export const itemPools: Record<string, ItemPool> = {
 	"2023-04": {
 		standard: [
 			{
-				name: "Boxed Autumnaton",
+				name: "Boxed autumn-aton",
 				quantity: 1,
 			},
 		],
@@ -21,11 +21,11 @@ export const itemPools: Record<string, ItemPool> = {
 				quantity: 1,
 			},
 			{
-				name: "Mummified entombed cookbookbat",
+				name: "mummified entombed cookbookbat",
 				quantity: 1,
 			},
 			{
-				name: "Packaged model train set",
+				name: "packaged model train set",
 				quantity: 1,
 			},
 		],
@@ -55,11 +55,11 @@ export const itemPools: Record<string, ItemPool> = {
 				quantity: 1,
 			},
 			{
-				name: "Mummified entombed cookbookbat",
+				name: "mummified entombed cookbookbat",
 				quantity: 1,
 			},
 			{
-				name: "Packaged model train set",
+				name: "packaged model train set",
 				quantity: 1,
 			},
 		],
