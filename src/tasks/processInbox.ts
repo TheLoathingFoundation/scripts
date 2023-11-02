@@ -2,32 +2,13 @@ import { bufferToFile, fileToBuffer, entityDecode } from "kolmafia";
 import { Kmail } from "libram";
 
 import { getItemByRankCode, getItemPool, getRankCodes } from "../itemPools";
-import { getMonthWithTrailingZero } from "../time";
+import { loadEntries, saveEntries } from "../entries";
 import type { Entry, ItemPool } from "../types";
 
 const BEST_RANKING_REGEX = /\[(([A-Z0-9](,\s*)?)+)\]/;
 const RANKING_REGEX = /(([A-H0-9](,\s*)?)+)($|\s|\.|\!|\)|\"|\&)/;
 
-const getCurrentEntriesFileName = (): string => {
-	const date = new Date();
-	return `TLF-entries-${date.getFullYear()}-${getMonthWithTrailingZero(date)}.json`;
-};
-
 const getMessageLogFileName = (): string => "TLF-message-log.json";
-
-const loadCurrentEntries = (): Record<string, Entry> => {
-	try {
-		const entriesBuffer = fileToBuffer(getCurrentEntriesFileName());
-		return JSON.parse(entriesBuffer) as Record<string, Entry>;
-	} catch {
-		return {};
-	}
-};
-
-const saveCurrentEntries = (entries: Record<string, Entry>) => {
-	const entriesBuffer = JSON.stringify(entries);
-	bufferToFile(entriesBuffer, getCurrentEntriesFileName());
-};
 
 const loadMessageLog = (): Record<string, Kmail> => {
 	try {
@@ -160,7 +141,7 @@ const isObsolete = (message: Kmail, entries: Record<string, Entry>): boolean => 
 export const processInbox = (baseDate: Date, saveAndSend = false, debug = false) => {
 	const inboxMessages = Kmail.inbox(9001);
 	const messageLog = loadMessageLog();
-	const entries = loadCurrentEntries();
+	const entries = loadEntries(new Date());
 	const itemPool = getItemPool(baseDate);
 	inboxMessages.forEach((message) => {
 		if (hasBeenProcessed(message, messageLog) && !debug) {
@@ -229,7 +210,7 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 	});
 
 	if (saveAndSend) {
-		saveCurrentEntries(entries);
+		saveEntries(entries, new Date());
 		saveMessageLog(messageLog);
 	}
 };

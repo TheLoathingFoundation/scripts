@@ -53,5 +53,5 @@ export const getDateKey = (date = new Date()): string => {
 
 export const getDateFromKey = (key: string): Date => {
 	const [year, month] = key.split("-");
-	return new Date(`${year} ${month} 01`);
+	return new Date(`${year}-${month}-02`);
 };

@@ -4,7 +4,7 @@ export const itemPools: Record<string, ItemPool> = {
 	"2023-04": {
 		standard: [
 			{
-				name: "Boxed Autumnaton",
+				name: "Boxed autumn-aton",
 				quantity: 1,
 			},
 		],
@@ -21,11 +21,11 @@ export const itemPools: Record<string, ItemPool> = {
 				quantity: 1,
 			},
 			{
-				name: "Mummified entombed cookbookbat",
+				name: "mummified entombed cookbookbat",
 				quantity: 1,
 			},
 			{
-				name: "Packaged model train set",
+				name: "packaged model train set",
 				quantity: 1,
 			},
 		],
@@ -55,11 +55,11 @@ export const itemPools: Record<string, ItemPool> = {
 				quantity: 1,
 			},
 			{
-				name: "Mummified entombed cookbookbat",
+				name: "mummified entombed cookbookbat",
 				quantity: 1,
 			},
 			{
-				name: "Packaged model train set",
+				name: "packaged model train set",
 				quantity: 1,
 			},
 		],
@@ -160,6 +160,62 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 			{
 				name: "Thor's Pliers",
+				quantity: 1,
+			},
+		],
+	},
+	"2023-10": {
+		standard: [
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "packaged June cleaver",
+				quantity: 1,
+			},
+			{
+				name: "combat lover's locket lockbox",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Pocket Meteor Guide",
+				quantity: 1,
+			},
+		],
+	},
+	"2023-11": {
+		standard: [
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+			{
+				name: "undamaged Unbreakable Umbrella",
+				quantity: 1,
+			},
+			{
+				name: "combat lover's locket lockbox",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "corked genie bottle",
+				quantity: 1,
+			},
+			{
+				name: "January's Garbage Tote (unopened)",
+				quantity: 1,
+			},
+			{
+				name: "jewel-eyed wizard hat",
 				quantity: 1,
 			},
 		],
