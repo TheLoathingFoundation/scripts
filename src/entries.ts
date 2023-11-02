@@ -30,7 +30,6 @@ export const loadEntriesCatalog = (
 		const entryMonth = new Date(start);
 		entryMonth.setDate(1);
 		entryMonth.setMonth(start.getMonth() + index + 1);
-		console.log(entryMonth.toDateString());
 		return entryMonth;
 	});
 
