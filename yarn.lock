@@ -2106,10 +2106,10 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-plugin-libram@^0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-libram/-/eslint-plugin-libram-0.3.5.tgz#ea620df15ab09907b1deaa9658406925cf9182eb"
-  integrity sha512-s5AwKMVuMcq1SfUbNU0yFMn+5B08teZ69RTXRRq8//Fx4w+14kqIyOv0pm5VO/l33E2MZcNRsuEDqMbcsSS9Ww==
+eslint-plugin-libram@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-libram/-/eslint-plugin-libram-0.4.0.tgz#7ea1fdc45d95529872319482e06ba49638d74f5c"
+  integrity sha512-YA+wc6SC/uwK8h/baMCV+Clj3x7PT7ZBfbHpnBPmMnjcrOwhq3EgPgczyLmBs9dm28+5ckvT1umWWysVBgIHdA==
   dependencies:
     html-entities "^2.4.0"
     requireindex "~1.2.0"
