@@ -286,4 +286,30 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2024-03": {
+		standard: [
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "A Guide to Burning Leaves",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "corked genie bottle",
+				quantity: 1,
+			},
+			{
+				name: "shortest-order cook",
+				quantity: 1,
+			},
+		],
+	},
 };
