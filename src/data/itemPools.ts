@@ -323,7 +323,33 @@ export const itemPools: Record<string, ItemPool> = {
 			{
 				name: "corked genie bottle",
 				quantity: 1,
-			}
+			},
+		],
+	},
+	"2024-05": {
+		standard: [
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "designer sweatpants (new old stock)",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Bag o' Tricks",
+				quantity: 1,
+			},
+			{
+				name: "SongBoom™ BoomBox Box",
+				quantity: 1,
+			},
+			{
+				name: "packaged Pocket Professor",
+				quantity: 1,
+			},
 		],
 	},
 };
