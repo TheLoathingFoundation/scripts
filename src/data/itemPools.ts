@@ -352,4 +352,30 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2024-06": {
+		standard: [
+			{
+				name: "combat lover's locket lockbox",
+				quantity: 1,
+			},
+			{
+				name: "mummified entombed cookbookbat",
+				quantity: 1,
+			},
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Bag o' Tricks",
+				quantity: 1,
+			},
+			{
+				name: "SongBoom™ BoomBox Box",
+				quantity: 1,
+			},
+		],
+	},
 };
