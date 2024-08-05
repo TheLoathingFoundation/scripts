@@ -7,6 +7,7 @@ build({
   bundle: true,
   minifySyntax: true,
   platform: "node",
+	packages: "bundle",
   target: "rhino1.7.14",
   external: ["kolmafia"],
   plugins: [babel()],
