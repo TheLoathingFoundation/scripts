@@ -18,7 +18,10 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 	const deadline = formatDate(getDeadline(baseDate));
 	const draw = formatDate(getDrawDate(baseDate));
 
-	return `Hello from The Loathing Foundation!
+	return `IMPORTANT: PLEASE READ THESE INSTRUCTIONS AS THEY HAVE CHANGED.  You can now rate TWO legacy items.
+
+Hello from The Loathing Foundation!
+
 For ${month} the following IOTMs will be made available for trade:
 
 ${standardItemList.join("\n")}
@@ -27,9 +30,9 @@ The current legacy item pool contains:
 
 ${legacyItemList.join("\n")}
 
-You may include *ONE* legacy item in your rankings; only one of them will be distributed in ${month}.
+You may include *TWO* legacy items in your rankings; only two of them will be distributed in ${month}.
 
-An example ranking: "[C, 1, A, B]"
+An example ranking: "[C, 1, A, 5, B]"
 
 Use the [] since it will help our robots know what's going on.
 

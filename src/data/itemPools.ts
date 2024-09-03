@@ -400,4 +400,42 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2024-08": {
+		standard: [
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Boris's Helm",
+				quantity: 1,
+			},
+			{
+				name: "Source terminal",
+				quantity: 1,
+			},
+			{
+				name: "vampyric cloake pattern",
+				quantity: 1,
+			},
+			{
+				name: "portable Mayo Clinic",
+				quantity: 1,
+			},
+			{
+				name: "Jarlsberg's pan",
+				quantity: 1,
+			},
+			{
+				name: "ice sickle",
+				quantity: 1,
+			},
+		],
+	},
 };
