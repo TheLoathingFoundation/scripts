@@ -17,14 +17,20 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 	const month = getMonthName(baseDate);
 	const deadline = formatDate(getDeadline(baseDate));
 	const draw = formatDate(getDrawDate(baseDate));
+	let standardItemMessage = '';
+	if (standardItemList.length === 0) {
+		standardItemMessage = `For ${month} there are no standard IOTMs available for trade because everything in our standard vault is still relatively affordable.`;
+	} else {
+		standardItemMessage = `For ${month} the following standard IOTMs will be made available for trade:
 
-	return `IMPORTANT: PLEASE READ THESE INSTRUCTIONS AS THEY HAVE CHANGED.  You can now rate TWO legacy items.
+${standardItemList.join("\n")}`;
+	}
+
+	return `IMPORTANT: PLEASE READ THESE INSTRUCTIONS AS THEY HAVE RECENTLY CHANGED.  You can now rate TWO legacy items.
 
 Hello from The Loathing Foundation!
 
-For ${month} the following IOTMs will be made available for trade:
-
-${standardItemList.join("\n")}
+${standardItemMessage}
 
 The current legacy item pool contains:
 
@@ -36,9 +42,11 @@ An example ranking: "[C, 1, A, 5, B]"
 
 Use the [] since it will help our robots know what's going on.
 
-Respond to this message by ${deadline} if you want to participate in the drawing.
-Winners will have an opportunity to trade 1 Mr. A + 3 Uncle Bucks (OR 13 Uncle Bucks) for the available item.
-Selected players will be announced via k-mail and on the foundation website on ${draw}.
+Send a message to TheLoathingFoundation (#3580284) by ${deadline} if you want to participate in the drawing.
+
+Winners will have an opportunity to trade 1 Mr. A + 3 Uncle Bucks (OR 13 Uncle Bucks) for the available item. Selected players will be announced via k-mail and on the foundation GitHub page on ${draw}.
+
+You can follow the draw at https://github.com/orgs/TheLoathingFoundation/discussions
 
 Remember:
 * Do NOT rank any items that you do not want.
