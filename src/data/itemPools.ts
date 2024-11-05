@@ -439,8 +439,7 @@ export const itemPools: Record<string, ItemPool> = {
 		],
 	},
 	"2024-09": {
-		standard: [
-		],
+		standard: [],
 		legacy: [
 			{
 				name: "Boris's Helm",
@@ -456,6 +455,74 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 			{
 				name: "ice sickle",
+				quantity: 1,
+			},
+		],
+	},
+	"2024-10": {
+		standard: [
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Boris's Helm",
+				quantity: 1,
+			},
+			{
+				name: "ice sickle",
+				quantity: 1,
+			},
+		],
+	},
+	"2024-11": {
+		standard: [
+			{
+				name: "mint condition magnifying glass",
+				quantity: 1,
+			},
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "packaged model train set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Crown of Thrones",
+				quantity: 1,
+			},
+			{
+				name: "stinky cheese eye",
+				quantity: 1,
+			},
+			{
+				name: "rune-strewn spoon cocoon",
+				quantity: 1,
+			},
+			{
+				name: "V for Vivala mask",
+				quantity: 1,
+			},
+			{
+				name: "stinky cheese sword",
+				quantity: 1,
+			},
+			{
+				name: "Mayflower bouquet",
 				quantity: 1,
 			},
 		],
