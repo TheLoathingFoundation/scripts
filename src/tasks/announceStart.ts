@@ -17,7 +17,7 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 	const month = getMonthName(baseDate);
 	const deadline = formatDate(getDeadline(baseDate));
 	const draw = formatDate(getDrawDate(baseDate));
-	let standardItemMessage = '';
+	let standardItemMessage = "";
 	if (standardItemList.length === 0) {
 		standardItemMessage = `For ${month} there are no standard IOTMs available for trade because everything in our standard vault is still relatively affordable.`;
 	} else {
