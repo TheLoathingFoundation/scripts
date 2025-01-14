@@ -26,17 +26,7 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 ${standardItemList.join("\n")}`;
 	}
 
-	return `*ACK*
-
-Apologies everybody. The item pool had a mistake. We distributed the Crown of Thrones last month, and we still have a V for Vivala mask.
-
-If you made a submission we still have it, but if you ranked a legacy item you may want to update with the new item codes.
-
-Even if you don't, I'll make sure that anybody who wins a legacy item actually gets their first available choice.
-
-So sorry for the confusion...
-
-The 7 day timeline is being re-set due to this mistake.
+	return `Hello from The Loathing Foundation!
 
 ${standardItemMessage}
 
