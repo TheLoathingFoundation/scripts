@@ -26,7 +26,9 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 ${standardItemList.join("\n")}`;
 	}
 
-	return `Hello from The Loathing Foundation!
+	return `IMPORTANT: you can now rank three legacy items.
+
+Hello from The Loathing Foundation!
 
 ${standardItemMessage}
 
@@ -34,9 +36,9 @@ The current legacy item pool contains:
 
 ${legacyItemList.join("\n")}
 
-You may include *TWO* legacy items in your rankings; only two of them will be distributed in ${month}.
+You may include *THREE* legacy items in your rankings; three of them will be distributed in ${month}.
 
-An example ranking: "[C, 1, A, 5, B]"
+An example ranking: "[C, 1, A, 5, 3, B]"
 
 Use the [] since it will help our robots know what's going on.
 
