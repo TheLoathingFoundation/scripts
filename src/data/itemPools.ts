@@ -645,4 +645,42 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2025-03": {
+		standard: [
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+			{
+				name: "S.I.T. Course Voucher",
+				quantity: 2,
+			},
+		],
+		legacy: [
+			{
+				name: "Jarlsberg's pan",
+				quantity: 1,
+			},
+			{
+				name: "Thor's Pliers",
+				quantity: 1,
+			},
+			{
+				name: "ice sickle",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "naughty fortune teller",
+				quantity: 1,
+			},
+			{
+				name: "Buddy Bjorn",
+				quantity: 1,
+			},
+		],
+	},
 };
