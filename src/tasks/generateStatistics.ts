@@ -32,7 +32,7 @@ export const generateStatistics = () => {
 			const entry = entries[playerId];
 			let isStandardEntry = false;
 			let isLegacyEntry = false;
-			entry.rankings.forEach(({ key }) => {
+			[...new Set(entry.rankings.map(({ key }) => key))].forEach((key) => {
 				rankCounts[key] = (rankCounts[key] ?? 0) + 1;
 				if (/\d+/.test(key)) {
 					isLegacyEntry = true;

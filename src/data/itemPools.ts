@@ -599,4 +599,50 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2025-02": {
+		standard: [
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Jarlsberg's pan",
+				quantity: 1,
+			},
+			{
+				name: "Thor's Pliers",
+				quantity: 1,
+			},
+			{
+				name: "ice sickle",
+				quantity: 1,
+			},
+			{
+				name: "vampyric cloake pattern",
+				quantity: 1,
+			},
+			{
+				name: "Crimbo P. R. E. S. S. I. E.",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "naughty fortune teller",
+				quantity: 1,
+			},
+			{
+				name: "Buddy Bjorn",
+				quantity: 1,
+			},
+			{
+				name: "Grumpy Bumpkin's Pumpkin Seed Catalog",
+				quantity: 1,
+			},
+		],
+	},
 };
