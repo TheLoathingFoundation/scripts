@@ -797,4 +797,38 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2025-07": {
+		standard: [
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+			{
+				name: "S.I.T. Course Voucher",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+			{
+				name: "shrink-wrapped 2002 Mr. Store Catalog",
+				quantity: 2,
+			},
+		],
+		legacy: [
+			{
+				name: "Crown of Thrones",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "KoL Con 13 snowglobe",
+				quantity: 1,
+			},
+		],
+	},
 };
