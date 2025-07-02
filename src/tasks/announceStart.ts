@@ -26,9 +26,7 @@ const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 ${standardItemList.join("\n")}`;
 	}
 
-	return `IMPORTANT: you can now rank three legacy items.
-
-Hello from The Loathing Foundation!
+	return `Hello from The Loathing Foundation!
 
 ${standardItemMessage}
 
