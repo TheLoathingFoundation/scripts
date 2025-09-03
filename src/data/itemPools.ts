@@ -831,4 +831,58 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2025-08": {
+		standard: [
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+			{
+				name: "S.I.T. Course Voucher",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "Pantsgiving",
+				quantity: 1,
+			},
+			{
+				name: "Libram of Divine Favors",
+				quantity: 1,
+			},
+			{
+				name: "latte lovers club card",
+				quantity: 1,
+			},
+			{
+				name: "stinky cheese eye",
+				quantity: 1,
+			},
+			{
+				name: "Spooky Putty sheet",
+				quantity: 1,
+			},
+			{
+				name: "bagged Cargo Cultist Shorts",
+				quantity: 1,
+			},
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "Great Ball of Frozen Fire",
+				quantity: 1,
+			},
+			{
+				name: "Greatest American Pants",
+				quantity: 1,
+			},
+		],
+	},
 };
