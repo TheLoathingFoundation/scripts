@@ -965,4 +965,116 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2025-11": {
+		standard: [
+			{
+				name: "A Guide to Burning Leaves",
+				quantity: 1,
+			},
+			{
+				name: "book of facts",
+				quantity: 1,
+			},
+			{
+				name: "boxed Apriling band helmet",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+			{
+				name: "closed-circuit phone system",
+				quantity: 2,
+			},
+			{
+				name: "cursed monkey glove",
+				quantity: 2,
+			},
+			{
+				name: "McHugeLarge deluxe ski set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "Snow Suit",
+				quantity: 1,
+			},
+			{
+				name: "shortest-order cook",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "corked genie bottle",
+				quantity: 1,
+			},
+			{
+				name: "portable Mayo Clinic",
+				quantity: 1,
+			},
+			{
+				name: "Kramco Industries packing carton",
+				quantity: 1,
+			},
+			{
+				name: "hippo tutu",
+				quantity: 1,
+			},
+		],
+	},
+	"2025-12": {
+		standard: [
+			{
+				name: "boxed Apriling band helmet",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+			{
+				name: "cursed monkey glove",
+				quantity: 2,
+			},
+			{
+				name: "McHugeLarge deluxe ski set",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 2,
+			},
+			{
+				name: "Snow Suit",
+				quantity: 1,
+			},
+			{
+				name: "shortest-order cook",
+				quantity: 1,
+			},
+			{
+				name: "hippo tutu",
+				quantity: 1,
+			},
+		],
+	},
 };
