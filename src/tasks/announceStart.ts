@@ -34,7 +34,7 @@ The current legacy item pool contains:
 
 ${legacyItemList.join("\n")}
 
-You may include *THREE* legacy items in your rankings; three of them will be distributed in ${month}.
+You may include *ALL FOUR* legacy items in your rankings; all of them will be distributed in ${month}.
 
 An example ranking: "[C, 1, A, 5, 3, B]"
 

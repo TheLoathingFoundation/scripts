@@ -1077,4 +1077,38 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2026-01": {
+		standard: [
+			{
+				name: "boxed Apriling band helmet",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+			{
+				name: "new-in-box toy Cupid bow",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "Snow Suit",
+				quantity: 1,
+			},
+			{
+				name: "shortest-order cook",
+				quantity: 1,
+			},
+		],
+	},
 };
