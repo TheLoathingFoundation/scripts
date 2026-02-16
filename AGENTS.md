@@ -161,6 +161,16 @@ yarn format       # Apply Prettier formatting
 
 CI runs `yarn build` and `yarn lint` on pushes/PRs to `main`.
 
+### Updating participants
+
+```bash
+TLF_SHEET_ID=<google-sheet-id> yarn update-participants
+```
+
+This runs a Node.js script (`src/scripts/updateParticipants.mjs`) that fetches participant data from a Google Sheets spreadsheet (exported as CSV), extracts player IDs from the "What is your Player Number?" column, sorts/deduplicates them, and writes the result to `src/data/participants.ts`.
+
+The `TLF_SHEET_ID` environment variable must be set to the Google Sheet ID (the long string in the spreadsheet URL). The spreadsheet must be publicly accessible (or accessible via link sharing).
+
 There is no automated test suite. Testing is done manually via KoLmafia using the `--debug` flag to preview behavior before using `--forRealsies`.
 
 ## Code Style
