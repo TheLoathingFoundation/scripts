@@ -1111,4 +1111,70 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2026-02": {
+		standard: [
+			{
+				name: "boxed Apriling band helmet",
+				quantity: 1,
+			},
+			{
+				name: "boxed Sept-Ember Censer",
+				quantity: 1,
+			},
+			{
+				name: "cursed monkey glove",
+				quantity: 1,
+			},
+			{
+				name: "in-the-box spring shoes",
+				quantity: 1,
+			},
+			{
+				name: "McHugeLarge deluxe ski set",
+				quantity: 1,
+			},
+			{
+				name: "new-in-box toy Cupid bow",
+				quantity: 1,
+			},
+			{
+				name: "packaged Monodent of the Sea",
+				quantity: 1,
+			},
+			{
+				name: "stocking full of bones",
+				quantity: 1,
+			},
+			{
+				name: "Unpeeled Peridot of Peril",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "packaged Jurassic Parka",
+				quantity: 1,
+			},
+			{
+				name: "corked genie bottle",
+				quantity: 1,
+			},
+			{
+				name: "closed-circuit phone system",
+				quantity: 3,
+			},
+			{
+				name: "doppelshifter egg",
+				quantity: 1,
+			},
+			{
+				name: "boxed autumn-aton",
+				quantity: 1,
+			},
+			{
+				name: "S.I.T. Course Voucher",
+				quantity: 1,
+			},
+		],
+	},
 };
