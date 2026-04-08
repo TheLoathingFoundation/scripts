@@ -1235,4 +1235,78 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2026-04": {
+		standard: [
+			{
+				name: "Black and White Apron Enrollment Form",
+				quantity: 1,
+			},
+			{
+				name: "boxed Apriling band helmet",
+				quantity: 1,
+			},
+			{
+				name: "boxed bat wings",
+				quantity: 1,
+			},
+			{
+				name: "in-the-box spring shoes",
+				quantity: 1,
+			},
+			{
+				name: "McHugeLarge deluxe ski set",
+				quantity: 1,
+			},
+			{
+				name: "mini kiwi egg",
+				quantity: 1,
+			},
+			{
+				name: "new-in-box toy Cupid bow",
+				quantity: 1,
+			},
+			{
+				name: "packaged Monodent of the Sea",
+				quantity: 1,
+			},
+			{
+				name: "stocking full of bones",
+				quantity: 1,
+			},
+			{
+				name: "Unpeeled Peridot of Peril",
+				quantity: 1,
+			},
+		],
+		legacy: [
+			{
+				name: "unopened tiny stillsuit",
+				quantity: 1,
+			},
+			{
+				name: "SongBoom™ BoomBox Box",
+				quantity: 1,
+			},
+			{
+				name: "mint condition magnifying glass",
+				quantity: 2,
+			},
+			{
+				name: "shrink-wrapped Cincho de Mayo",
+				quantity: 3,
+			},
+			{
+				name: "Loathing Legion knife",
+				quantity: 1,
+			},
+			{
+				name: "shrink-wrapped 2002 Mr. Store Catalog",
+				quantity: 3,
+			},
+			{
+				name: "Granny Tood's Thanksgarden Catalog",
+				quantity: 1,
+			},
+		],
+	},
 };
