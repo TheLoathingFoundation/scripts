@@ -10,6 +10,7 @@
     "lint:prettier": "prettier --check src/**/*.ts src/*.ts",
     "format": "prettier --write src/**/*.ts src/*.ts",
     "install-mafia": "create-kolmafia-script --install",
+    "test": "vitest run",
     "update-participants": "node src/scripts/updateParticipants.mjs && yarn format"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "eslint-plugin-libram": "^0.5.3",
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
   }
 }
