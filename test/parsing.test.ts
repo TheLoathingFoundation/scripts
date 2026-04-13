@@ -152,8 +152,16 @@ describe("parseRankings", () => {
 			expect(parseRankings("Hello, thanks for the info!")).toBeUndefined();
 		});
 
-		it("returns undefined for lowercase letters", () => {
-			expect(parseRankings("[a, b, c]")).toBeUndefined();
+		it("accepts lowercase letters inside brackets", () => {
+			expect(parseRankings("[a, b, c]")).toEqual(["A", "B", "C"]);
+		});
+
+		it("accepts lowercase letters in bracket fallback", () => {
+			expect(parseRankings("[abc]")).toEqual(["A", "B", "C"]);
+		});
+
+		it("returns undefined for lowercase letters without brackets", () => {
+			expect(parseRankings("a, b, c")).toBeUndefined();
 		});
 
 		it("prefers bracket notation over unbracketed", () => {

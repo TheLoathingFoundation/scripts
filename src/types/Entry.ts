@@ -1,6 +1,5 @@
 interface Ranking {
 	key: string;
-	item: string;
 }
 export interface Entry {
 	date: string;

@@ -1,17 +1,22 @@
 import { Kmail } from "libram";
 
 import { participants } from "../data/participants";
-import { getItemPool } from "../itemPools";
+import {
+	getItemPool,
+	getRankCodeForStandardItemIndex,
+	getRankCodeForLegacyItemIndex,
+} from "../itemPools";
 import { getMonthName, formatDate, getDrawDate, getDeadline } from "../time";
 import type { ItemPool } from "../types";
 
 const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
 	const standardItemList = itemPool.standard.map(
 		(itemClass, index) =>
-			`${String.fromCharCode(65 + index)}. ${itemClass.name} (${itemClass.quantity}x)`,
+			`${getRankCodeForStandardItemIndex(index)}. ${itemClass.name} (${itemClass.quantity}x)`,
 	);
 	const legacyItemList = itemPool.legacy.map(
-		(itemClass, index) => `${1 + index}. ${itemClass.name} (${itemClass.quantity}x)`,
+		(itemClass, index) =>
+			`${getRankCodeForLegacyItemIndex(index)}. ${itemClass.name} (${itemClass.quantity}x)`,
 	);
 
 	const month = getMonthName(baseDate);

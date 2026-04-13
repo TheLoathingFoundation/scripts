@@ -18,6 +18,12 @@ export const registerResult = (
 	if (!(key in results)) {
 		results[key] = [];
 	}
+	const existingIndex = results[key].findIndex((r) => r.playerId === playerId);
+	if (existingIndex >= 0) {
+		console.log(`Player ${playerId} already has a result for ${key}. Skipping.`);
+		return;
+	}
+
 	const item = getItemByRankCode(rankCode, itemPool);
 	results[key].push({
 		playerId: playerId,
@@ -26,7 +32,7 @@ export const registerResult = (
 		date: date.toISOString(),
 		rankCode: rankCode,
 	});
-	results[key].forEach((result, index) => {
+	results[key].forEach((result) => {
 		console.log(`${result.playerName} (#${result.playerId}): ${result.item} (${result.rankCode})`);
 	});
 
