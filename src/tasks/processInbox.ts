@@ -1,13 +1,10 @@
 import { bufferToFile, fileToBuffer, entityDecode } from "kolmafia";
 import { Kmail } from "libram";
 
-import { getItemByRankCode, getItemPool, getRankCodes } from "../itemPools";
 import { loadEntries, saveEntries } from "../entries";
+import { getItemByRankCode, getItemPool, getRankCodes } from "../itemPools";
+import { ordinal, parseRankings, stripHtmlTags } from "../parsing";
 import type { Entry, ItemPool } from "../types";
-
-const BEST_RANKING_REGEX = /\[\s*((?:[A-Z]|\d+)(?:\s*,\s*(?:[A-Z]|\d+))*)\s*\]/;
-const BRACKET_FALLBACK_REGEX = /\[([A-Z\d]+)\]/;
-const RANKING_REGEX = /((?:[A-Z]|\d+)(?:\s*,\s*(?:[A-Z]|\d+))+)(?:$|\s|[.!)"&])/;
 
 const getMessageLogFileName = (): string => "TLF-message-log.json";
 
@@ -23,44 +20,6 @@ const loadMessageLog = (): Record<string, Kmail> => {
 const saveMessageLog = (messages: Record<string, Kmail>) => {
 	const messagesBuffer = JSON.stringify(messages);
 	bufferToFile(messagesBuffer, getMessageLogFileName());
-};
-
-const stripQuotedText = (text: string): string =>
-	text
-		.split("\n")
-		.filter((line) => !line.startsWith(">"))
-		.filter((line) => !line.startsWith("&gt;"))
-		.join("\n");
-
-const stripHtmlTable = (text: string): string => text.replace(/<table.*>.*<\/table>/g, "");
-
-const stripHtmlTags = (text: string): string => text.replace(/<[^>]*>?/gm, "");
-
-const tryToFindRankings = (text: string) =>
-	text.match(BEST_RANKING_REGEX) || text.match(BRACKET_FALLBACK_REGEX) || text.match(RANKING_REGEX);
-
-const parseRankings = (text: string): string[] | undefined => {
-	text = stripQuotedText(text);
-	text = stripHtmlTable(text);
-	const rankings = tryToFindRankings(text);
-	if (rankings === null) {
-		return undefined;
-	}
-	const content = rankings[1].trim();
-	if (content.includes(",")) {
-		return content
-			.split(",")
-			.map((r) => r.trim())
-			.filter((r) => r !== "");
-	}
-	return content.match(/[A-Z]|\d+/g) || undefined;
-};
-
-const ordinal = (n: number): string => {
-	const endings = ["th", "st", "nd", "rd"];
-	const base = n % 100;
-	const ending = endings[(base - 20) % 10] || endings[base] || endings[0];
-	return `${n}${ending}`;
 };
 
 const generateQuote = (message: Kmail): string =>
