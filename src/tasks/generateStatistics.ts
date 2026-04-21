@@ -16,7 +16,7 @@ export const generateStatistics = () => {
 	// Meat saved
 	// ^^ All of this for each month and in total
 
-	const entriesCatalog = loadEntriesCatalog(new Date("2023-04-01"), new Date());
+	const entriesCatalog = loadEntriesCatalog(new Date(2023, 3, 1), new Date());
 	const resultsCatalog = loadResults();
 	const distributionCountMap = {} as Record<string, number>;
 

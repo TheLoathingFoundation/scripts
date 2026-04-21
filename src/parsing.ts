@@ -1,5 +1,5 @@
-const BEST_RANKING_REGEX = /\[\s*((?:[A-Z]|\d+)(?:\s*,\s*(?:[A-Z]|\d+))*)\s*\]/;
-const BRACKET_FALLBACK_REGEX = /\[([A-Z\d]+)\]/;
+const BEST_RANKING_REGEX = /\[\s*((?:[A-Za-z]|\d+)(?:\s*,\s*(?:[A-Za-z]|\d+))*)\s*\]/;
+const BRACKET_FALLBACK_REGEX = /\[([A-Za-z\d]+)\]/;
 const RANKING_REGEX = /((?:[A-Z]|\d+)(?:\s*,\s*(?:[A-Z]|\d+))+)(?:$|\s|[.!)"&])/;
 
 export const stripQuotedText = (text: string): string =>
@@ -27,10 +27,10 @@ export const parseRankings = (text: string): string[] | undefined => {
 	if (content.includes(",")) {
 		return content
 			.split(",")
-			.map((r) => r.trim())
+			.map((r) => r.trim().toUpperCase())
 			.filter((r) => r !== "");
 	}
-	return content.match(/[A-Z]|\d+/g) || undefined;
+	return content.toUpperCase().match(/[A-Z]|\d+/g) || undefined;
 };
 
 export const ordinal = (n: number): string => {

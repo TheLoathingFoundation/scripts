@@ -22,5 +22,5 @@ export const saveResults = (results: Record<string, Result[]>) => {
 export const getResultsByDate = (date: Date): Result[] => {
 	const results = loadResults();
 	const dateKey = getDateKey(date);
-	return results[dateKey];
+	return results[dateKey] ?? [];
 };

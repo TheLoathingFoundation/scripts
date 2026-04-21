@@ -1,9 +1,9 @@
 import { bufferToFile, fileToBuffer } from "kolmafia";
-import { getDateKey, getMonthWithTrailingZero } from "./time";
+import { getDateKey, getMonthWithLeadingZero } from "./time";
 import type { Entry } from "./types";
 
 export const getEntriesFileName = (date: Date): string => {
-	return `TLF-entries-${date.getFullYear()}-${getMonthWithTrailingZero(date)}.json`;
+	return `TLF-entries-${date.getFullYear()}-${getMonthWithLeadingZero(date)}.json`;
 };
 
 export const loadEntries = (date: Date): Record<string, Entry> => {
@@ -25,11 +25,11 @@ export const loadEntriesCatalog = (
 	end: Date,
 ): Record<string, Record<string, Entry>> => {
 	const monthCount =
-		(end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth();
+		(end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth() + 1;
 	const entryMonths = Array.from({ length: monthCount }, (_, index) => {
 		const entryMonth = new Date(start);
 		entryMonth.setDate(1);
-		entryMonth.setMonth(start.getMonth() + index + 1);
+		entryMonth.setMonth(start.getMonth() + index);
 		return entryMonth;
 	});
 

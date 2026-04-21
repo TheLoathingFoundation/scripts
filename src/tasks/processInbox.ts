@@ -105,7 +105,7 @@ const isObsolete = (message: Kmail, entries: Record<string, Entry>): boolean => 
 export const processInbox = (baseDate: Date, saveAndSend = false, debug = false) => {
 	const inboxMessages = Kmail.inbox(9001);
 	const messageLog = loadMessageLog();
-	const entries = loadEntries(new Date());
+	const entries = loadEntries(baseDate);
 	const itemPool = getItemPool(baseDate);
 	inboxMessages.forEach((message) => {
 		if (hasBeenProcessed(message, messageLog) && !debug) {
@@ -154,7 +154,6 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 				message: message.message,
 				rankings: rankings.map((ranking) => ({
 					key: ranking,
-					item: "",
 				})),
 			};
 			entries[message.senderId] = entry;
@@ -174,7 +173,7 @@ export const processInbox = (baseDate: Date, saveAndSend = false, debug = false)
 	});
 
 	if (saveAndSend) {
-		saveEntries(entries, new Date());
+		saveEntries(entries, baseDate);
 		saveMessageLog(messageLog);
 	}
 };

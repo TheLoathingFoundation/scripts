@@ -1,4 +1,4 @@
-export const getMonthWithTrailingZero = (date: Date): string => {
+export const getMonthWithLeadingZero = (date: Date): string => {
 	const month = date.getMonth() + 1;
 	const monthWithTrailingZero = month < 10 ? `0${month}` : `${month}`;
 	return monthWithTrailingZero;
@@ -46,12 +46,12 @@ export const getDeadline = (baseDate: Date): Date => {
 
 export const getDateKey = (date = new Date()): string => {
 	const year = date.getFullYear();
-	const month = getMonthWithTrailingZero(date);
+	const month = getMonthWithLeadingZero(date);
 	const key = `${year}-${month}`;
 	return key;
 };
 
 export const getDateFromKey = (key: string): Date => {
 	const [year, month] = key.split("-");
-	return new Date(`${year}-${month}-02`);
+	return new Date(Number(year), Number(month) - 1, 1);
 };

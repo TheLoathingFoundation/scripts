@@ -7,18 +7,18 @@ import {
 	getDeadline,
 	getDrawDate,
 	getMonthName,
-	getMonthWithTrailingZero,
+	getMonthWithLeadingZero,
 } from "../src/time";
 
-describe("getMonthWithTrailingZero", () => {
+describe("getMonthWithLeadingZero", () => {
 	it("pads single-digit months", () => {
-		expect(getMonthWithTrailingZero(new Date("2024-01-15"))).toBe("01");
-		expect(getMonthWithTrailingZero(new Date("2024-09-15"))).toBe("09");
+		expect(getMonthWithLeadingZero(new Date("2024-01-15"))).toBe("01");
+		expect(getMonthWithLeadingZero(new Date("2024-09-15"))).toBe("09");
 	});
 
 	it("does not pad double-digit months", () => {
-		expect(getMonthWithTrailingZero(new Date("2024-10-15"))).toBe("10");
-		expect(getMonthWithTrailingZero(new Date("2024-12-15"))).toBe("12");
+		expect(getMonthWithLeadingZero(new Date("2024-10-15"))).toBe("10");
+		expect(getMonthWithLeadingZero(new Date("2024-12-15"))).toBe("12");
 	});
 });
 
