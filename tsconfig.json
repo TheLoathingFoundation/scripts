@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": ".",
     "noEmit": true,
+    "skipLibCheck": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "declaration": false,
