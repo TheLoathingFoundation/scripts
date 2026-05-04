@@ -4,9 +4,9 @@ import { myId } from "kolmafia";
 import {
 	announceStart,
 	announceWinners,
+	generateStatistics,
 	processInbox,
 	registerResult,
-	generateStatistics,
 } from "./tasks";
 import { getDateFromKey } from "./time";
 
@@ -71,7 +71,7 @@ export default function main(command = "help"): void {
 		Args.showHelp(config);
 		return;
 	}
-	let baseDate = config.date ? getDateFromKey(config.date) : new Date();
+	const baseDate = config.date ? getDateFromKey(config.date) : new Date();
 
 	if (config.kickoff) {
 		announceStart(baseDate, config.forRealsies, config.debug);

@@ -1,10 +1,8 @@
-import { participants } from "../data/participants";
 import { loadResults } from "../results";
 import {
-	getItemByRankCode,
 	getItemPool,
-	getRankCodeForStandardItemIndex,
 	getRankCodeForLegacyItemIndex,
+	getRankCodeForStandardItemIndex,
 } from "../itemPools";
 import { loadEntriesCatalog } from "../entries";
 
