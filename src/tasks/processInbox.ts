@@ -1,4 +1,4 @@
-import { bufferToFile, fileToBuffer, entityDecode } from "kolmafia";
+import { bufferToFile, entityDecode, fileToBuffer } from "kolmafia";
 import { Kmail } from "libram";
 
 import { loadEntries, saveEntries } from "../entries";
@@ -24,7 +24,7 @@ const saveMessageLog = (messages: Record<string, Kmail>) => {
 
 const generateQuote = (message: Kmail): string =>
 	entityDecode(stripHtmlTags(message.rawMessage))
-		.replace(/\&/g, "")
+		.replace(/&/g, "")
 		.split("\n")
 		.map((line) => `> ${line}`)
 		.join("\n");

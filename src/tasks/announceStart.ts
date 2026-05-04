@@ -3,10 +3,10 @@ import { Kmail } from "libram";
 import { participants } from "../data/participants";
 import {
 	getItemPool,
-	getRankCodeForStandardItemIndex,
 	getRankCodeForLegacyItemIndex,
+	getRankCodeForStandardItemIndex,
 } from "../itemPools";
-import { getMonthName, formatDate, getDrawDate, getDeadline } from "../time";
+import { formatDate, getDeadline, getDrawDate, getMonthName } from "../time";
 import type { ItemPool } from "../types";
 
 const getMessage = (itemPool: ItemPool, baseDate: Date): string => {
