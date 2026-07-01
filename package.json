@@ -5,7 +5,7 @@
   "homepage": "https://foundation.loathers.net",
   "license": "MIT",
   "scripts": {
-    "build": "node build.mjs",
+    "build": "rollup -c rollup.config.mjs",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --check src/**/*.ts src/*.ts",
     "lint:eslint": "eslint 'src/**/*.ts'",
@@ -18,30 +18,32 @@
   "dependencies": {
     "grimoire-kolmafia": "^0.3.33",
     "kolmafia": "latest",
-    "libram": "^0.11.22"
+    "libram": "^0.11.23"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
+    "@babel/core": "^8",
+    "@babel/preset-env": "^8",
+    "@babel/preset-typescript": "^8",
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-babel": "^7.1.0",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.10.0",
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.0.1",
     "create-kolmafia-script": "latest",
-    "csv-parse": "^6.2.1",
-    "esbuild": "^0.28.0",
-    "esbuild-plugin-babel": "^0.2.3",
+    "csv-parse": "^7.0.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-libram": "^0.6.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.4",
+    "rollup": "^4.62.2",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.1",
-    "vitest": "^4.1.8"
+    "typescript-eslint": "^8.62.1",
+    "vitest": "^4.1.9"
   }
 }
