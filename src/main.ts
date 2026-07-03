@@ -57,7 +57,7 @@ const config = Args.create(
 	},
 );
 
-export default function main(command = "help"): void {
+export function main(command = "help"): void {
 	if (myId() !== "3580284") {
 		// TheLoathingFoundation (#3580284)
 		console.log(
