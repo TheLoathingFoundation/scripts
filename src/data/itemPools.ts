@@ -1405,4 +1405,57 @@ export const itemPools: Record<string, ItemPool> = {
 			},
 		],
 	},
+	"2026-07": {
+		standard: [],
+		legacy: [
+			{
+				name: "can of Rain-Doh",
+				quantity: 1,
+			},
+			{
+				name: "bad penguin egg",
+				quantity: 1,
+			},
+			{
+				name: "closed-circuit phone system",
+				quantity: 1,
+			},
+			{
+				name: "packaged miniature crystal ball",
+				quantity: 1,
+			},
+			{
+				name: "mint condition magnifying glass",
+				quantity: 1,
+			},
+			{
+				name: "Pantsgiving",
+				quantity: 1,
+			},
+			{
+				name: "space planula",
+				quantity: 1,
+			},
+			{
+				name: "Ed the Undying exhibit crate",
+				quantity: 1,
+			},
+			{
+				name: "S.I.T. Course Voucher",
+				quantity: 1,
+			},
+			{
+				name: "cursed monkey glove",
+				quantity: 1,
+			},
+			{
+				name: "navel ring of navel gazing",
+				quantity: 1,
+			},
+			{
+				name: "shrink-wrapped 2002 Mr. Store Catalog",
+				quantity: 1,
+			},
+		],
+	},
 };
