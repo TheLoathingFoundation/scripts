@@ -14,7 +14,7 @@ export default {
   output: {
     dir: "dist/scripts/tlf",
     format: "cjs",
-    exports: "auto",
+    exports: "named",
     entryFileNames: "[name].js",
     chunkFileNames: "_[name].js",
   },
