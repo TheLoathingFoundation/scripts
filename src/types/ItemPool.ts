@@ -1,4 +1,4 @@
-interface ItemClass {
+export interface ItemClass {
 	name: string;
 	quantity: number;
 }
