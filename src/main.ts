@@ -4,9 +4,14 @@ import { myId } from "kolmafia";
 import {
 	announceStart,
 	announceWinners,
+	dumpDisplayCase,
+	generateLegacyPool,
+	generateMonthlyPool,
 	generateStatistics,
 	processInbox,
 	registerResult,
+	syncDisplayCase,
+	syncMintingPool,
 } from "./tasks";
 import { getDateFromKey } from "./time";
 
@@ -54,6 +59,30 @@ const config = Args.create(
 			help: "Generate some fun statistics",
 			setting: "",
 		}),
+		generateLegacyPool: Args.flag({
+			help: "Randomly draw the quarterly legacy pool from the Mature Legacy shelf, stage it on the Legacy Pool shelf, and write JSON (dry-run unless forRealsies).",
+			setting: "",
+		}),
+		generateMonthlyPool: Args.flag({
+			help: "Build the month's draw pool from the Available Standard + Legacy Pool shelves and write JSON (dry-run unless forRealsies).",
+			setting: "",
+		}),
+		dumpDisplayCase: Args.flag({
+			help: "Snapshot the display case (with live mall prices) to a JSON file for node scripts.",
+			setting: "",
+		}),
+		syncMintingPool: Args.flag({
+			help: "Move Mr. A's and Uncle Bucks onto the Minting Pool shelf (dry-run unless forRealsies).",
+			setting: "",
+		}),
+		syncDisplayCase: Args.flag({
+			help: "Sort the display case by category/price into its shelves (dry-run unless forRealsies).",
+			setting: "",
+		}),
+		nocache: Args.flag({
+			help: "Ignore the cached mall prices and re-search the mall for every item.",
+			setting: "",
+		}),
 	},
 );
 
@@ -90,6 +119,31 @@ export function main(command = "help"): void {
 
 	if (config.generateStatistics) {
 		generateStatistics();
+		return;
+	}
+
+	if (config.generateLegacyPool) {
+		generateLegacyPool(baseDate, config.forRealsies, config.debug);
+		return;
+	}
+
+	if (config.generateMonthlyPool) {
+		generateMonthlyPool(baseDate, config.forRealsies, config.debug);
+		return;
+	}
+
+	if (config.dumpDisplayCase) {
+		dumpDisplayCase(config.debug, !config.nocache);
+		return;
+	}
+
+	if (config.syncMintingPool) {
+		syncMintingPool(config.forRealsies, config.debug);
+		return;
+	}
+
+	if (config.syncDisplayCase) {
+		syncDisplayCase(baseDate, config.forRealsies, config.debug, !config.nocache);
 		return;
 	}
 
