@@ -4,15 +4,15 @@
 
 This is a TypeScript CLI tool (`tlf`) for managing **The Loathing Foundation's** monthly item raffle in [Kingdom of Loathing (KoL)](https://www.kingdomofloathing.com/), run via [KoLmafia](https://wiki.kolmafia.us/). The foundation distributes in-game items (IOTMs) to participants through a ranked-choice raffle system.
 
-The script runs inside KoLmafia's embedded JavaScript runtime (Rhino 1.7.14), not Node.js. It is compiled from TypeScript via esbuild + Babel.
+The script runs inside KoLmafia's embedded JavaScript runtime (Rhino 1.7.14), not Node.js. It is compiled from TypeScript via Rollup + Babel.
 
 ## Tech Stack
 
 - **Language:** TypeScript (strict mode)
 - **Runtime target:** Rhino 1.7.14 (KoLmafia's JS engine, NOT Node.js)
-- **Bundler:** esbuild with Babel plugin (`build.mjs`)
+- **Bundler:** Rollup with Babel, `@babel/preset-env` targeting Rhino 1.7.14 (`rollup.config.mjs`). Frees references to `console`/`atob` are injected from `kolmafia-polyfill.mjs`.
 - **Linting:** ESLint + Prettier (100 char line width)
-- **Package manager:** Yarn
+- **Package manager:** Yarn (v1 / classic — do not use Corepack's Yarn 4, it rewrites the lockfile)
 - **Key libraries:**
   - `kolmafia` — KoLmafia API bindings (file I/O via `bufferToFile`/`fileToBuffer`, `Item`, `getPlayerName`, etc.). This is an external package provided by the runtime — it is never bundled.
   - `libram` — KoLmafia utility library (provides the `Kmail` class for sending/receiving kmails)
@@ -29,15 +29,25 @@ src/
 │   ├── announceWinners.ts
 │   ├── processInbox.ts
 │   ├── registerResult.ts
-│   └── generateStatistics.ts
+│   ├── generateStatistics.ts
+│   ├── generateLegacyPool.ts # Suggest a legacy pool from display-case prices
+│   ├── dumpDisplayCase.ts    # Snapshot the display case (+ prices) to JSON
+│   ├── syncDisplayCase.ts    # Sort the display case onto its shelves by category/price
+│   └── syncMintingPool.ts    # Move Mr. A's / Uncle Bucks onto the Minting Pool shelf
 ├── types/               # TypeScript interfaces
 │   ├── index.ts         # Barrel re-export
 │   ├── Entry.ts         # { date, message, rankings: { key, item }[] }
 │   ├── ItemPool.ts      # { standard: { name, quantity }[], legacy: { name, quantity }[] }
+│   ├── ItemRecord.ts    # { name, year, originalCost, id?, search? } — item directory row
 │   └── Result.ts        # { date, playerId, playerName, rankCode, item }
 ├── data/
 │   ├── itemPools.ts     # Record<"YYYY-MM", ItemPool> — the monthly raffle item definitions
+│   ├── itemDirectory.ts # ItemRecord[] — every Mr. Store item (year + original Mr. A cost)
 │   └── participants.ts  # Array of KoL player IDs registered with the foundation
+├── registry.ts          # Standard-vs-legacy category logic + item-directory lookups
+├── mall.ts              # cheapestMallPrice(): cheapest live mall listing, cached hourly
+├── displayCase.ts       # Read/arrange display-case shelves via raw KoLmafia requests
+├── format.ts            # Rhino-safe meat formatter (toLocaleString is unavailable)
 ├── entries.ts           # Load/save monthly entry JSON files
 ├── results.ts           # Load/save raffle results JSON
 ├── itemPools.ts         # Item pool lookups and rank code utilities
@@ -67,8 +77,9 @@ All commands are invoked through `main.ts` via `grimoire-kolmafia` Args. The sha
 | Flag | Purpose |
 |---|---|
 | `--date YYYY-MM` | Target month (defaults to current) |
-| `--forRealsies` | Actually send kmails / save files |
+| `--forRealsies` | Actually send kmails / save files / move shelves |
 | `--debug` | Verbose output; prevents sends/saves (overrides `forRealsies`) |
+| `--nocache` | Ignore cached mall prices and re-search the mall (pricing tasks) |
 
 Tasks:
 1. **`kickoff`** — Send monthly raffle announcement kmail to all participants
@@ -76,6 +87,10 @@ Tasks:
 3. **`announceWinners`** — Send results kmail to all participants
 4. **`registerResult`** — Record a winner (requires `--playerId` and `--rankCode`)
 5. **`generateStatistics`** — Print participation and distribution stats across all months
+6. **`syncDisplayCase`** — Sort the display case onto its shelves by category and cheapest mall price (dry-run unless `--forRealsies`)
+7. **`syncMintingPool`** — Deposit and shelve Mr. A's / Uncle Bucks onto the Minting Pool
+8. **`generateLegacyPool`** — Suggest a legacy pool from the display case using live mall prices
+9. **`dumpDisplayCase`** — Snapshot the display case (with prices) to a JSON file for node-side scripts
 
 ## How to Add a New Task
 
@@ -190,4 +205,4 @@ There is no automated test suite. Testing is done manually via KoLmafia using th
 - **Send/save safety:** All tasks that send kmails or write files must respect the `send`/`forRealsies` and `debug` flags. Never send or save by default. The pattern is: `if (send && !debug)` to gate side effects.
 - **No Node.js APIs:** The runtime is Rhino, not Node. File I/O uses KoLmafia's `bufferToFile`/`fileToBuffer`, not `fs`. There is no `fetch`, `process`, etc.
 - **Entry JSON files are git-ignored.** They live on KoLmafia's filesystem, not in the repo.
-- **The `kolmafia` package is external.** It is provided by the KoLmafia runtime and must never be bundled — it is listed in `external` in `build.mjs`.
+- **The `kolmafia` package is external.** It is provided by the KoLmafia runtime and must never be bundled — it is listed in `external` in `rollup.config.mjs`.
