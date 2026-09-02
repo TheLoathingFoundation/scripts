@@ -13,6 +13,8 @@ export const itemDirectory: ItemRecord[] = [
 	{ name: "boxed Archaeologist's Spade", year: 2026, originalCost: 1 },
 	{ name: "boxed Heartstone", year: 2026, originalCost: 1 },
 	{ name: "discreetly-wrapped Eternity Codpiece", year: 2026, originalCost: 1 },
+	{ name: "Interesting Coin Inheritance Letter", year: 2026, originalCost: 1 },
+	{ name: "meat shield toddler", year: 2026, originalCost: 1 },
 	{ name: "pasta wand loot box", year: 2026, originalCost: 1 },
 	{ name: "scabbarded Sword of S Words", year: 2026, originalCost: 1 },
 	{ name: "seal-clubbing club loot box", year: 2026, originalCost: 1 },
