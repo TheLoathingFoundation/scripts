@@ -18,7 +18,8 @@ interface Copy {
  * Build the quarterly legacy pool. Expand the "Mature" Legacy Items shelf into
  * one entry per physical copy (an item with 4 copies gets 4 chances), draw
  * POOL_SIZE copies at random, move the drawn item types onto the Legacy Pool
- * shelf, and write the pool as JSON for src/data/itemPools.ts.
+ * shelf, and write the pool as JSON for src/data/itemPools.ts, offering each
+ * drawn type at the number of its copies that were drawn.
  *
  * Refuses to run if the Legacy Pool shelf already holds items — clear it first.
  * Dry-run by default; pass forRealsies (send) to move shelves and write the

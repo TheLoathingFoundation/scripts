@@ -27,6 +27,9 @@ const byName = (a: ItemClass, b: ItemClass): number => {
  *
  * Prints the pool as JSON for src/data/itemPools.ts and, with forRealsies, writes
  * it to a data file. debug forces a dry run.
+ *
+ * The legacy quantities are shelf copy counts, not the month's offering — carry
+ * last month's legacy section forward by hand and adjust it instead of pasting.
  */
 export const generateMonthlyPool = (baseDate = new Date(), send = false, debug = false) => {
 	const { shelves, items } = fetchArrangement();
@@ -79,6 +82,11 @@ export const generateMonthlyPool = (baseDate = new Date(), send = false, debug =
 
 	console.log(`\n## Pool JSON (for src/data/itemPools.ts)\n`);
 	console.log(poolJson);
+	console.log(
+		`\n!! Do not paste the legacy section as-is. Copy last month's legacy section ` +
+			`from src/data/itemPools.ts and update its quantities — the counts above are ` +
+			`the copies sitting on the shelf, not what the month should offer.`,
+	);
 
 	if (!send || debug) {
 		console.log(
