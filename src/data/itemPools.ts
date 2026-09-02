@@ -1474,4 +1474,13 @@ export const itemPools: Record<string, ItemPool> = {
 			{ name: "space planula", quantity: 1 },
 		],
 	},
+	"2026-09": {
+		standard: [],
+		legacy: [
+			{ name: "closed-circuit phone system", quantity: 1 },
+			{ name: "cursed monkey glove", quantity: 1 },
+			{ name: "mint condition magnifying glass", quantity: 1 },
+			{ name: "packaged miniature crystal ball", quantity: 1 },
+		],
+	},
 };
