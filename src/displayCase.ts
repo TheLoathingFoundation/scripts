@@ -36,9 +36,10 @@ export const parseArrangement = (html: string): ShelfArrangement => {
 		}
 	}
 
-	// Each item row exposes both its id and current shelf via addform(id, shelf).
+	// Each item row exposes both its id and current shelf via addform(id, shelf, name).
+	// Match only the leading id and shelf so a change to the trailing args doesn't break it.
 	const items: DisplayCaseItem[] = [];
-	const rowRegex = /addform\((\d+),\s*(\d+)\)/g;
+	const rowRegex = /addform\((\d+),\s*(\d+)\s*[,)]/g;
 	let match: RegExpExecArray | null;
 	while ((match = rowRegex.exec(html)) !== null) {
 		const itemId = Number(match[1]);
