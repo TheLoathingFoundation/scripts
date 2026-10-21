@@ -1483,4 +1483,18 @@ export const itemPools: Record<string, ItemPool> = {
 			{ name: "packaged miniature crystal ball", quantity: 1 },
 		],
 	},
+	"2026-10": {
+		standard: [{ name: "Unpeeled Peridot of Peril", quantity: 1 }],
+		legacy: [
+			{ name: "a cute angel", quantity: 1 },
+			{ name: "bottle-rocket crossbow", quantity: 1 },
+			{ name: "closed-circuit phone system", quantity: 2 },
+			{ name: "Comma Chameleon egg", quantity: 1 },
+			{ name: "cursed monkey glove", quantity: 1 },
+			{ name: "mint condition magnifying glass", quantity: 2 },
+			{ name: "unopened tiny stillsuit", quantity: 2 },
+			{ name: "unpowered Robortender", quantity: 1 },
+			{ name: "xo-skeleton-in-a-box", quantity: 1 },
+		],
+	},
 };

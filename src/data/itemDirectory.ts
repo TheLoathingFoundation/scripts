@@ -10,6 +10,7 @@ import type { ItemRecord } from "../types";
 //   year         release year (of the item or its Mr. Store parent)
 //   originalCost Mr. Accessory price at release (most IOTMs 1; some IOTYs 2)
 export const itemDirectory: ItemRecord[] = [
+	{ name: "black rosebud", year: 2026, originalCost: 1 },
 	{ name: "boxed Archaeologist's Spade", year: 2026, originalCost: 1 },
 	{ name: "boxed Heartstone", year: 2026, originalCost: 1 },
 	{ name: "discreetly-wrapped Eternity Codpiece", year: 2026, originalCost: 1 },
